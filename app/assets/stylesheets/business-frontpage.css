@@ -7,8 +7,8 @@
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
-    height: 400px;
-    background: url('http://placehold.it/1920x400') center center no-repeat scroll;
+    height: 160px;
+    background: url('http://www.baruerinaweb.com.br/wp-content/uploads/Fundo.png') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -18,7 +18,7 @@
 /* Customize the text color and shadow color and to optimize text legibility. */
 
 .tagline {
-    text-shadow: 0 0 10px #000;
+    text-shadow: 0 0 10px #111;
     color: #fff;
 }
 

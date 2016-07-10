@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      article: Artigos
+      user: Usuários
+    attributes:
+      article:
+        id: "Código" 
+        title: "Título"
+        body: "Artigo"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      # will translate User attribute "login" as "Handle"
