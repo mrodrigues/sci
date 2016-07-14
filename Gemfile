@@ -18,9 +18,12 @@ gem 'devise'
 gem 'high_voltage'
 gem 'mysql2', '~> 0.3.18'
 gem 'simple_form'
+
 gem 'therubyracer', :platform=>:ruby
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'will_paginate', '~> 3.1.0'
+
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
