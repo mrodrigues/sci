@@ -27,3 +27,6 @@ pt-BR:
   sign_out: "Sair"
   sign_in: "Entrar"
   sign_up: "Me cadastrar"
+  forgot_password: "Esqueceu a senha"
+  remember_me: "Lembrar-me"
+  contact_us: "Nos contate"
