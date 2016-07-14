@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= form_tag(articles_path, :method => :get) do %>
+  <%= text_field_tag 'search', nil, placeholder: 'Título do Artigo' %>
+  <%= submit_tag "Pesquisar" %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
