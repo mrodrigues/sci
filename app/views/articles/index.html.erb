@@ -7,24 +7,20 @@
   <%= text_field_tag 'search', nil, placeholder: 'Título do Artigo' %>
   <%= submit_tag "Pesquisar" %>
 <% end %>
-
+<br/>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= link_to article.id, article_path(article) %></td>
-        <td><%= article.title %></td>
+        <td><%= link_to article.title, article_path(article) %></td>
         <td><%= article.body %></td>
-        <td><%=l article.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_article_path(article), :class => 'btn btn-default btn-xs' %>

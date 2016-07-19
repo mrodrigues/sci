@@ -8,6 +8,8 @@
   <dd><%= @article.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
   <dd><%= @article.body %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%=l @article.created_at %></dd>  
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
