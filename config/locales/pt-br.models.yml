@@ -3,9 +3,10 @@ pt-BR:
     models:
       article: Artigos
       user: Usuários
+      taxonomy: Taxonomias
     attributes:
       article:
-        id: "Código" 
+        id: "Id" 
         title: "Título"
         body: "Artigo"
         created_at: "Criado em"
@@ -14,4 +15,10 @@ pt-BR:
         name: "Nome"
         password: "Senha"
         password_confirmation: "Confirmação de Senha"
+      taxonomy:
+        id: "Id" 
+        code: "Código"
+        description: "Descrição"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"        
       # will translate User attribute "login" as "Handle"

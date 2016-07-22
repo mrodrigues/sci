@@ -8,7 +8,7 @@
 
 .business-header {
     height: 160px;
-    background: url('http://www.baruerinaweb.com.br/wp-content/uploads/Fundo.png') center center no-repeat scroll;
+    background: url('Fundo.png') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

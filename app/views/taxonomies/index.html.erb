@@ -1,31 +1,31 @@
-<%- model_class = Article -%>
+<%- model_class = Taxonomy -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<%= form_tag(articles_path, :method => :get) do %>
-  <%= text_field_tag 'search', nil, placeholder: 'Pesquisa do Artigo' %>
+<%= form_tag(taxonomies_path, :method => :get) do %>
+  <%= text_field_tag 'search', nil, placeholder: 'Pesquisa da Taxonomia' %>
   <%= submit_tag "Pesquisar" %>
 <% end %>
 <br/>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:body) %></th>
+      <th><%= model_class.human_attribute_name(:code) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @articles.each do |article| %>
+    <% @taxonomies.each do |taxonomy| %>
       <tr>
-        <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= article.body %></td>
+        <td><%= link_to taxonomy.code, taxonomy_path(taxonomy) %></td>
+        <td><%= taxonomy.description %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_article_path(article), :class => 'btn btn-default btn-xs' %>
+                      edit_taxonomy_path(taxonomy), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      article_path(article),
+                      taxonomy_path(taxonomy),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -36,7 +36,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_article_path,
+            new_taxonomy_path,
             :class => 'btn btn-primary' %>
-
-<%= will_paginate @articles %>
