@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @article.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-  <dd><%= @article.body %></dd>
+  <dd><%= @article.body.html_safe %></dd>
   <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
   <dd><%=l @article.created_at %></dd>  
 </dl>
