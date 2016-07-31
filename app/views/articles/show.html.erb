@@ -10,6 +10,8 @@
   <dd><%= @article.body.html_safe %></dd>
   <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
   <dd><%=l @article.created_at %></dd>  
+  <dt><strong><%= model_class.human_attribute_name(:user) %>:</strong></dt>
+  <dd><%= @article.user.name %></dd>    
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

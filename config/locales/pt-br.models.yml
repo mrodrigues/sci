@@ -11,6 +11,7 @@ pt-BR:
         body: "Artigo"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+        user: "Criado por"
       user:
         name: "Nome"
         password: "Senha"
@@ -21,4 +22,5 @@ pt-BR:
         description: "Descrição"
         created_at: "Criado em"
         updated_at: "Atualizado em"        
+        user: "Criado por"
       # will translate User attribute "login" as "Handle"

@@ -30,7 +30,7 @@ class TaxonomiesController < ApplicationController
   # POST /taxonomies.json
   def create
     @taxonomy = Taxonomy.new(taxonomy_params)
-
+    @taxonomy.user_id = current_user.id 
     respond_to do |format|
       if @taxonomy.save
         format.html { redirect_to @taxonomy, notice: 'Taxonomy was successfully created.' }

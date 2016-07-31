@@ -5,4 +5,6 @@ class Article < ActiveRecord::Base
 	def self.search(query)
  		where("title like ? or body like ?","%#{query}%","%#{query}%")
  	end 	
+
+ 	belongs_to :user
 end

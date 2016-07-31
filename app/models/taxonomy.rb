@@ -5,4 +5,6 @@ class Taxonomy < ActiveRecord::Base
 	def self.search(query)
  		where("code like ? or description like ?","%#{query}%","%#{query}%")
  	end 	
+
+ 	belongs_to :user
 end

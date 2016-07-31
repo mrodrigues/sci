@@ -10,6 +10,8 @@
   <dd><%= @taxonomy.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
   <dd><%=l @taxonomy.created_at %></dd>    
+  <dt><strong><%= model_class.human_attribute_name(:user) %>:</strong></dt>
+  <dd><%= @taxonomy.user.name %></dd>    
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
