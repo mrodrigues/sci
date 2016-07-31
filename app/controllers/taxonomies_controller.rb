@@ -33,7 +33,7 @@ class TaxonomiesController < ApplicationController
     @taxonomy.user_id = current_user.id 
     respond_to do |format|
       if @taxonomy.save
-        format.html { redirect_to @taxonomy, notice: 'Taxonomy was successfully created.' }
+        format.html { redirect_to @taxonomy, notice: @taxonomy.code+t(:was_created) }
         format.json { render :show, status: :created, location: @taxonomy }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class TaxonomiesController < ApplicationController
   def update
     respond_to do |format|
       if @taxonomy.update(taxonomy_params)
-        format.html { redirect_to @taxonomy, notice: 'Taxonomy was successfully updated.' }
+        format.html { redirect_to @taxonomy, notice: @taxonomy.code+t(:was_updated) }
         format.json { render :show, status: :ok, location: @taxonomy }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class TaxonomiesController < ApplicationController
   def destroy
     @taxonomy.destroy
     respond_to do |format|
-      format.html { redirect_to taxonomies_url, notice: 'Taxonomy was successfully destroyed.' }
+      format.html { redirect_to taxonomies_url, notice: @taxonomy.code+t(:was_destroyed) }
       format.json { head :no_content }
     end
   end
