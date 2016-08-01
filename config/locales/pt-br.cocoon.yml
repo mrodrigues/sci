@@ -1,0 +1,5 @@
+pt-BR:
+  cocoon:
+    defaults:
+      add: "Adicionar"
+      remove: "Remover"

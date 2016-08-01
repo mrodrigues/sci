@@ -1,0 +1,7 @@
+<li class="control-group nested-fields">
+  <%= f.fields_for :taxonomy do |relationship_taxonomy| %>
+    <%= relationship_taxonomy.text_field :code %>
+  <% end %>
+
+  <%= link_to_remove_association f %>
+</li>
