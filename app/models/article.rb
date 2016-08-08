@@ -7,8 +7,8 @@ class Article < ActiveRecord::Base
  	end 	
 
  	belongs_to :user
- 	has_many :relationships
- 	has_many :taxonomies, :through => :relationships
+ 	has_many :relationships, :dependent => :delete_all
+ 	has_many :taxonomies, :through => :relationships, :dependent => :delete_all
  	#has_and_belongs_to_many :taxonomies
 
  	accepts_nested_attributes_for :relationships, reject_if: :all_blank, allow_destroy: true

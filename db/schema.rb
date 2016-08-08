@@ -11,23 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731232306) do
-
-  create_table "article_taxonomies", force: :cascade do |t|
-    t.integer  "article_id",  limit: 4
-    t.integer  "taxonomy_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  add_index "article_taxonomies", ["article_id"], name: "index_article_taxonomies_on_article_id", using: :btree
-  add_index "article_taxonomies", ["taxonomy_id"], name: "index_article_taxonomies_on_taxonomy_id", using: :btree
+ActiveRecord::Schema.define(version: 20160802162015) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.text     "body",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "body",       limit: 4294967295
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id",    limit: 4
   end
 
@@ -72,8 +62,6 @@ ActiveRecord::Schema.define(version: 20160731232306) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "article_taxonomies", "articles"
-  add_foreign_key "article_taxonomies", "taxonomies"
   add_foreign_key "articles", "users"
   add_foreign_key "relationships", "articles"
   add_foreign_key "relationships", "taxonomies"
