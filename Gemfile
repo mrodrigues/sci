@@ -9,7 +9,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
-gem 'mysql2', '~> 0.3.18'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -32,9 +31,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'thin'
   gem 'byebug'  
+  gem 'mysql2', '~> 0.3.18'
 end
 group :production do
   gem 'unicorn'
+  gem 'pg' #plano free do heroku so roda postgree
 end
 group :test do
   gem 'capybara'
