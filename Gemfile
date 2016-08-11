@@ -16,6 +16,7 @@ gem "twitter-bootstrap-rails"
 gem 'will_paginate', '~> 3.1.0'
 gem 'sprockets', '3.6.3'
 gem 'ckeditor'
+gem 'paperclip'
 gem 'cocoon'
 group :development do
   gem 'better_errors'
