@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20160810235416) do
 
+  create_table "article_taxonomies", force: :cascade do |t|
+    t.integer  "article_id",  limit: 4
+    t.integer  "taxonomy_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "article_taxonomies", ["article_id"], name: "index_article_taxonomies_on_article_id", using: :btree
+  add_index "article_taxonomies", ["taxonomy_id"], name: "index_article_taxonomies_on_taxonomy_id", using: :btree
+
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "body",       limit: 4294967295
@@ -79,6 +89,8 @@ ActiveRecord::Schema.define(version: 20160810235416) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "article_taxonomies", "articles"
+  add_foreign_key "article_taxonomies", "taxonomies"
   add_foreign_key "articles", "users"
   add_foreign_key "relationships", "articles"
   add_foreign_key "relationships", "taxonomies"
