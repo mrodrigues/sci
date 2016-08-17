@@ -51,6 +51,7 @@ capybara-*.html
 .rspec
 /log
 /tmp
+/public/ckeditor_assets/pictures
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
