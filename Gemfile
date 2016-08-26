@@ -38,6 +38,7 @@ group :production do
   gem 'unicorn'
   gem 'pg' #plano free do heroku so roda postgree
   gem 'rails_12factor'
+  gem 'rmagick'
 end
 group :test do
   gem 'capybara'
