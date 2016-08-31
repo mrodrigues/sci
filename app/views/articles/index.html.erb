@@ -4,15 +4,17 @@
 </div>
 
 <%= form_tag(articles_path, :method => :get) do %>
-  <%= text_field_tag 'search', nil, placeholder: 'Pesquisa do Artigo' %>
-  <%= submit_tag "Pesquisar" %>
+  <div class='col-sm-4'>
+    <%= text_field_tag 'search', nil, placeholder: 'Pesquisa do Artigo', :class => 'form-control' %>
+  </div>
+  <%= submit_tag "Pesquisar", :class => 'btn btn-default' %>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_article_path, :class => 'btn btn-primary' %>  
 <% end %>
 <br/>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:body) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,8 +22,8 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= strip_tags(article.body) %></td>
         <td>
+          <%= link_to 'Ver', article_path(article), :class => 'btn btn-xs btn-success' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_article_path(article), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -34,9 +36,5 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_article_path,
-            :class => 'btn btn-primary' %>
 
 <%= will_paginate @articles %>

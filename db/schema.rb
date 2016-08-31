@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810235416) do
+ActiveRecord::Schema.define(version: 20160830232739) do
+
+  create_table "article_likes", force: :cascade do |t|
+    t.integer  "article_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "article_likes", ["article_id", "user_id"], name: "index_article_likes_on_article_id_and_user_id", unique: true, using: :btree
+  add_index "article_likes", ["article_id"], name: "index_article_likes_on_article_id", using: :btree
+  add_index "article_likes", ["user_id"], name: "index_article_likes_on_user_id", using: :btree
+
+  create_table "article_taxonomies", force: :cascade do |t|
+    t.integer  "article_id",  limit: 4
+    t.integer  "taxonomy_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "article_taxonomies", ["article_id"], name: "index_article_taxonomies_on_article_id", using: :btree
+  add_index "article_taxonomies", ["taxonomy_id"], name: "index_article_taxonomies_on_taxonomy_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -39,6 +60,21 @@ ActiveRecord::Schema.define(version: 20160810235416) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "flaggings", force: :cascade do |t|
+    t.string   "flaggable_type", limit: 255
+    t.integer  "flaggable_id",   limit: 4
+    t.string   "flagger_type",   limit: 255
+    t.integer  "flagger_id",     limit: 4
+    t.string   "flag",           limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flaggings", ["flag", "flaggable_type", "flaggable_id"], name: "index_flaggings_on_flag_and_flaggable_type_and_flaggable_id", using: :btree
+  add_index "flaggings", ["flag", "flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flag_flaggings", using: :btree
+  add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id", using: :btree
+  add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "article_id",  limit: 4
@@ -79,6 +115,10 @@ ActiveRecord::Schema.define(version: 20160810235416) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "article_likes", "articles"
+  add_foreign_key "article_likes", "users"
+  add_foreign_key "article_taxonomies", "articles"
+  add_foreign_key "article_taxonomies", "taxonomies"
   add_foreign_key "articles", "users"
   add_foreign_key "relationships", "articles"
   add_foreign_key "relationships", "taxonomies"

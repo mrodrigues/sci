@@ -1,7 +1,9 @@
-<li class="control-group nested-fields">
+<div class="control-group nested-fields">
   <%= f.fields_for :taxonomy do |relationship_taxonomy| %>
-    <%= relationship_taxonomy.text_field :code %>
-  <% end %>
-
-  <%= link_to_remove_association f %>
-</li>
+    <div class="col-sm-2">
+      <%= relationship_taxonomy.text_field :code, :class => 'form-control' %>
+      <%= link_to_remove_association f, :class => 'btn btn-xs btn-danger' %>
+    </div>
+        
+  <% end %> 
+</div>

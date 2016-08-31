@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/cavneb/make_flaggable.git
+  revision: cb61243d8200fb67d666fb7679e57934305aae49
+  specs:
+    make_flaggable (0.1.1)
+      activerecord (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -284,6 +291,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
+  make_flaggable!
   mysql2 (~> 0.3.18)
   paperclip
   pg

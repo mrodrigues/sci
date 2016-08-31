@@ -18,6 +18,7 @@ gem 'sprockets', '3.6.3'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'cocoon'
+gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
