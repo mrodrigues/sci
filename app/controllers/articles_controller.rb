@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
+<<<<<<< HEAD
   before_action :set_article, only: [:show, :edit, :update, :destroy]
    
+=======
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
+>>>>>>> origin/master
 
   # GET /articles
   # GET /articles.json
@@ -65,6 +69,18 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: @article.title+t(:was_destroyed) }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @article_like = ArticleLike.where(['article_id = ? AND user_id = ?', @article.id, current_user.id]).first
+    if @article_like != nil
+      @article_like.destroy
+      msg = "Não gostou do artigo? Diga como podemos melhora-lo."
+    else
+      article_like = ArticleLike.create(article_id: @article.id, user_id: current_user.id)      
+      msg = "Este artigo te ajudou, que bom!"
+    end    
+    redirect_to @article, notice: msg
   end
 
   private

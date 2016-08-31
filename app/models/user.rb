@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :taxonomies
   has_many :articles
+  has_many :articlelikes
 end
