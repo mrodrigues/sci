@@ -5,6 +5,12 @@
 
 <dl>
   <dd><strong><%= model_class.human_attribute_name(:title) %>: </strong><%= @article.title %></dd>
+  <dd>
+    <strong>Tags: </strong>
+    <% @article.taxonomies.each do |taxonomies| %>
+      #<%= taxonomies.code %>
+    <% end %>
+  </dd>
   <dd><strong><%= model_class.human_attribute_name(:created_at) %>: </strong><%=l @article.created_at %></dd>
   <dd><strong><%= model_class.human_attribute_name(:user) %>: </strong><%= @article.user.name %></dd>
   <dd><br/></dd>
