@@ -11,17 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810235416) do
+ActiveRecord::Schema.define(version: 20160831024547) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "body",       limit: 4294967295
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "user_id",    limit: 4
+    t.string   "title",                    limit: 255
+    t.text     "body",                     limit: 4294967295
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "user_id",                  limit: 4
+    t.string   "attachments_file_name",    limit: 255
+    t.string   "attachments_content_type", limit: 255
+    t.integer  "attachments_file_size",    limit: 4
+    t.datetime "attachments_updated_at"
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer "article_id",    limit: 4
+    t.string  "style",         limit: 255
+    t.binary  "file_contents", limit: 65535
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
