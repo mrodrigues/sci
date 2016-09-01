@@ -1,10 +1,7 @@
 class ArticlesController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-   
-=======
+
   before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
->>>>>>> origin/master
+
 
   # GET /articles
   # GET /articles.json
