@@ -18,10 +18,13 @@ gem 'sprockets', '3.6.3'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'cocoon'
+<<<<<<< HEAD
 gem 'paperclip_database', '~> 2.3', '>= 2.3.1'
 
 gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
 
+=======
+>>>>>>> origin/master
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
@@ -42,7 +45,6 @@ group :production do
   gem 'unicorn'
   gem 'pg' #plano free do heroku so roda postgree
   gem 'rails_12factor'
-  gem 'rmagick'
 end
 group :test do
   gem 'capybara'
