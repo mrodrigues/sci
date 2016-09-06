@@ -1,6 +1,6 @@
 class ChangeTextToLongtext < ActiveRecord::Migration
   def up
-    change_column :articles, :body, :longtext
+    change_column :articles, :body, :text, :limit => 1073741823
   end
 
   def down

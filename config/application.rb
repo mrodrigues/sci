@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+Paperclip.options[:command_path] = "/usr/local/bin/identify"
 module Sci
   class Application < Rails::Application
 
@@ -34,5 +34,6 @@ module Sci
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.precompile += %w( ckeditor/* )
   end
 end

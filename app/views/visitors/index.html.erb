@@ -17,49 +17,62 @@
 <!-- Page Content -->
 <div class="container">
 
-    <hr>
-
-    <div class="row">
-        <div class="col-sm-8">
-            <h2>O que é?</h2>
-            <p>Um sistema desenhado para ajudar em suas dúvidas, e quando não puder encontrar quem possa.</p>
-            <p>Faça perguntas, começe discussões no fórum, e crie artigos que ajudaram outros!</p>
-            <br/>            
-            <p>"Nenhum talento individual por maior que seja será maior que o esforço coletivo de todos."</p>
-            <br/>            
+    <% if not user_signed_in? %>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>O que é?</h2>
+                <p>Um sistema desenhado para ajudar em suas dúvidas.</p>
+                <p>Faça perguntas, começe discussões no fórum, e crie artigos que ajudaram outros!</p>
+                <br/>            
+                <p>"Nenhum talento individual por maior que seja será maior que o esforço coletivo de todos."</p>
+                <br/>            
+            </div>
+            <div class="col-sm-4">
+                <h2><%= t('contact_us') %></h2>
+                <address>
+                    <strong>NSI / By Soft</strong>
+                    <br/> (19) 3445.6500
+                    <br/><a href="mailto:#">comercial@ecomex.com.br</a>
+                    <br/>Rua Carlos Gomes, 1321 – 3º Andar Pátio Office – Centro – Limeira/SP CEP 13.480-013
+                    <br/>
+                </address>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h2><%= t('contact_us') %></h2>
-            <address>
-                <strong>NSI / By Soft</strong>
-                <br/> (19) 3445.6500
-                <br/><a href="mailto:#">comercial@ecomex.com.br</a>
-                <br/>Rua Carlos Gomes, 1321 – 3º Andar Pátio Office – Centro – Limeira/SP CEP 13.480-013
-                <br/>
-            </address>
-        </div>
-    </div>
     <!-- /.row -->
-
-    <hr>
-    <% if user_signed_in? %>
+    <% else %>    
+        <hr/>
+        <center>
         <p>
-            <a class="btn btn-default btn-lg" href="#">Buscar &raquo;</a>
+            <%= form_tag(articles_path, :method => :get) do %>
+              <%= link_to "Criar +".html_safe, new_article_path, :class => 'btn btn-default btn-lg' %>  
+              <%= text_field_tag 'search', nil, class: "btn btn-default btn-lg" %>
+              <%= submit_tag "Buscar &raquo;".html_safe, class: "btn btn-default btn-lg" %>
+            <% end %>        
         </p>
+        <hr/>
         <div class="row">
             <div class="col-sm-4">
-                <h2>0{fazer funcionar}</h2>
-                <p>Dúvidas abertas.</p>
+                <h2><%= @articles.count %></h2>artigos no sistema.
             </div>
             <div class="col-sm-4">
-                <h2>0{fazer funcionar}</h2>
-                <p>Dúvidas respondidas</p>
+                <h2><%= @articles.where(user_id: current_user.id).count %></h2>artigos que criei.
             </div>
             <div class="col-sm-4">
-                <h2>0{fazer funcionar}</h2>
-                <p>Seu ranking</p>
+                <h2><%= @article_likes.where(user_id: current_user.id).count %></h2>artigos que me ajudaram.
             </div>
         </div>
+        <hr/>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            Sistema em operação assistida em desenvolvimento, estamos liberando as funcionalidades em etapas.
+          </div>
+          <div class="panel-body">
+            Se você tiver qualquer problema, dúvida ou sugestão por favor envie um e-mail para:<br/>
+            <strong><%= mail_to("grupo.b@ecomex.com.br", name = nil, html_options = {}) %></strong>
+          </div>
+        </div>        
+        </center>
     <% end %>
     <!-- /.row -->
 

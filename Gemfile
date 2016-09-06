@@ -18,6 +18,8 @@ gem 'sprockets', '3.6.3'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'cocoon'
+gem 'paperclip_database', '~> 2.3', '>= 2.3.1'
+
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

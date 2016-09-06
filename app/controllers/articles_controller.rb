@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
+
 
   # GET /articles
   # GET /articles.json
@@ -66,6 +68,18 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def like
+    @article_like = ArticleLike.where(['article_id = ? AND user_id = ?', @article.id, current_user.id]).first
+    if @article_like != nil
+      @article_like.destroy
+      msg = "Não gostou do artigo? Diga como podemos melhora-lo."
+    else
+      article_like = ArticleLike.create(article_id: @article.id, user_id: current_user.id)      
+      msg = "Este artigo te ajudou, que bom!"
+    end    
+    redirect_to @article, notice: msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -74,8 +88,11 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, 
+      params.require(:article).permit(:title, :body, :attachments,
                                       :relationships_attributes => [:id, :article_id, :taxonomy_id, :_destroy, 
                                                                     :taxonomy_attributes => [:id, :code]])
+
+      
     end
+
 end
